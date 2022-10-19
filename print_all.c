@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <string.h>
+#include "main.h"
 /**
  * one - func
  * @ptr: ptr
+ * Return: void
  */
 void one(va_list ptr)
 {
@@ -12,6 +14,7 @@ void one(va_list ptr)
 /**
  * two - func
  * @ptr: ptr
+ * Return: void
  */
 void two(va_list ptr)
 {
@@ -20,6 +23,7 @@ void two(va_list ptr)
 /**
  * three - func
  * @ptr: ptr
+ * Return: void
  */
 void three(va_list ptr)
 {
@@ -29,7 +33,7 @@ void three(va_list ptr)
 /**
  * four - func
  * @ptr: ptr
- * @s: s
+ * Return: void
  */
 int four(va_list ptr)
 {
@@ -41,4 +45,14 @@ int four(va_list ptr)
 		putchar(s[i]);
 	}
 	return (len);
+}
+/**
+ * five - func
+ * @ptr: ptr
+ * Return: void
+ */
+void five(va_list ptr)
+{
+	int m = va_arg(ptr, int);
+	pr_int(m);
 }

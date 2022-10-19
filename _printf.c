@@ -14,8 +14,10 @@ int _printf(const char *format, ...)
 {
 	const char *text = format;
 	int len = strlen(format);
+	int lenchar = 0;
 	int i;
 	int i2;
+	int m;
 	char str;
 	int skiptwo = 0;
 	va_list ptr;
@@ -30,16 +32,19 @@ int _printf(const char *format, ...)
 			if (text[i] == '%' && text[i + 1] == formats[i2] && formats[i2] == 'c')
 			{
 				one(ptr);
+				lenchar++;
 				skiptwo = 1;
 			}
 			else if (text[i] == '%' && text[i + 1] == formats[i2] && formats[i2] == 's')
 			{
-				four(ptr);
+				m = four(ptr);
+				lenchar = lenchar + m;
 				skiptwo = 1;
 			}
 			else if (text[i] == '%' && text[i + 1] == formats[i2] && formats[i2] == '%')
 			{
 				three(ptr);
+				lenchar++;
 				skiptwo = 1;
 			}
 			else
@@ -50,6 +55,7 @@ int _printf(const char *format, ...)
 		if (skiptwo == 0)
 		{
 			putchar(str);
+			lenchar++;
 		}
 		else
 		{
@@ -57,5 +63,5 @@ int _printf(const char *format, ...)
 			skiptwo = 0;
 		}
 	}
-	return (0);
+	return (lenchar);
 }

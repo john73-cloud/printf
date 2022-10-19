@@ -31,7 +31,7 @@ void three(va_list ptr)
  * @ptr: ptr
  * @s: s
  */
-void four(va_list ptr)
+int four(va_list ptr)
 {
 	char *s = va_arg(ptr, char *);
 	int len = strlen(s);
@@ -40,4 +40,5 @@ void four(va_list ptr)
 	{
 		putchar(s[i]);
 	}
+	return (len);
 }
